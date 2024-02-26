@@ -7,7 +7,8 @@ import {
 import { Denops } from "https://deno.land/x/ddu_vim@v2.0.0/deps.ts";
 
 export type ActionData = {
-  text: string;
+  name: string;
+  cmd: string;
   callbackId: string;
 };
 
@@ -21,7 +22,7 @@ export class Kind extends BaseKind<Params> {
         await args.denops.call(
           "denops#callback#call",
           action.callbackId,
-          action.text,
+          action.cmd,
         );
       }
 
