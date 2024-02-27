@@ -2,7 +2,7 @@
 
 Custom list source for ddu.vim
 
-This souce allows you to specify custom text list as a ddu source programatically.
+This souce allows you to specify custom text/cmd list as a ddu source programatically.
 
 == Configuration
 
@@ -22,11 +22,11 @@ call ddu#custom#patch_global({
 [source,vim]
 ----
 let id = denops#callback#register(
-    \ {s -> execute(printf('echom "%s"', s), '')},
+    \ {s -> execute(printf('%s', s), '')},
     \ {'once': v:true})
 call ddu#start({'sources': [
     \  {'name': 'custom-list',
-    \   'params': {'texts': ['hello', 'world'], 'callbackId': id}}]})
+    \   'params': {'cmdList': [{'text':'hello','cmd':':':DoAThing'}, {'text':'world','cmd':':DoAnotherThing'], 'callbackId': id}}]})
 ----
 
 == License
